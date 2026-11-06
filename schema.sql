@@ -27,3 +27,18 @@ CREATE TABLE IF NOT EXISTS krs (
     FOREIGN KEY (matakuliah_id) REFERENCES matakuliah(id) ON DELETE CASCADE,
     UNIQUE KEY unique_pengambilan (mahasiswa_id, matakuliah_id)
 );
+
+-- Data Seeder Akun Mahasiswa
+INSERT INTO mahasiswa (nim, nama, password) VALUES 
+('3253111006', 'Caesar Akbar Hazimul Fikri', 'password123')
+ON DUPLICATE KEY UPDATE nama=VALUES(nama);
+
+-- Data Seeder Katalog Mata Kuliah Semester 3
+INSERT INTO matakuliah (kode_mk, nama_mk, sks, semester, dosen, kuota) VALUES
+('SI301', 'Pemrograman Web', 3, 3, 'Dosen PWP', 30),
+('SI302', 'Sistem Operasi', 3, 3, 'Dosen SO', 30),
+('SI303', 'Manajemen Proses Bisnis', 3, 3, 'Dosen MPB', 30),
+('SI304', 'Krenovasi dan Kewirausahaan', 2, 3, 'Dosen KWU', 30),
+('SI305', 'Pemrograman Berorientasi Objek', 3, 3, 'Dosen PBO', 30),
+('SI306', 'Rekayasa Perangkat Lunak', 3, 3, 'Dosen RPL', 30)
+ON DUPLICATE KEY UPDATE nama_mk=VALUES(nama_mk);
